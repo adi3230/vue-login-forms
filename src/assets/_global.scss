@@ -1,0 +1,48 @@
+// (1): Support for IE11 for CSS grid
+.hg-vueapp {
+    display: grid;
+    grid-template-areas: "header"
+		                 "navigation"
+		                 "main"
+		                 "ads"
+                         "footer";
+    grid-template-columns: 100%;
+    grid-template-rows: 100px /* Header */
+							50px /* Navigation */
+							1fr /* Main Content */
+							50px /* Ads */
+							30px; /* Footer */
+    min-height: 100vh;                        
+
+    //MQs for Larger screens
+    @media only screen and (min-device-width : 768px) {
+        grid-template-areas: "header header header"
+                             "navigation main ads"
+                             "footer footer footer";
+        grid-template-columns: 150px 1fr 150px;
+        grid-template-rows: 100px 
+						1fr
+                        30px;
+    }
+    
+}
+
+.hg-vueapp-header {
+    grid-area: header;
+}
+
+.hg-vueapp-sidebar-left {
+    grid-area: navigation;
+}
+
+.hg-vueapp-content {
+    grid-area: main;
+}
+
+.hg-vueapp-sidebar-right {
+    grid-area: ads;
+}
+
+.hg-vueapp-footer {
+    grid-area: footer;
+}
