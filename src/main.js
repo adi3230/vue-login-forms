@@ -3,9 +3,7 @@ import App from './App.vue'
 import router from './router'
 import firebase from 'firebase'
 
-import './assets/_global.scss'
-import './assets/login.scss'
-import './assets/signUp.scss'
+import './assets/app.scss'
 
 Vue.config.productionTip = false
 
