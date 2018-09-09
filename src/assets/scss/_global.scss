@@ -11,8 +11,9 @@
 							50px /* Navigation */
 							1fr /* Main Content */
 							50px /* Ads */
-							30px; /* Footer */
-    min-height: 100vh;                        
+							50px; /* Footer */
+    min-height: 100vh;
+    margin: 0;                     
 
     //MQs for Larger screens
     @media only screen and (min-device-width : 768px) {
@@ -22,13 +23,14 @@
         grid-template-columns: 150px 1fr 150px;
         grid-template-rows: 100px 
 						1fr
-                        30px;
+                        50px;
     }
     
 }
 
 .hg-vueapp-header {
     grid-area: header;
+    background-color: #42b883;
 }
 
 .hg-vueapp-sidebar-left {
@@ -45,4 +47,5 @@
 
 .hg-vueapp-footer {
     grid-area: footer;
+    background-color: #35495e;
 }
