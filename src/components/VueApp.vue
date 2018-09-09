@@ -1,11 +1,11 @@
 <template>
-    <div class="hg-vueapp">
+    <div id="app" class="hg-vueapp">
         <header class="hg-vueapp-header">
-            Header
+            
         </header>
   
         <aside class="hg-vueapp-sidebar-left">
-            Left Sidebar
+            
         </aside>
 
         <article class="hg-vueapp-content">
@@ -14,11 +14,11 @@
         </article>
 
         <aside class="hg-vueapp-sidebar-right">
-            Right Sidebar
+            
         </aside>
 
         <footer class="hg-vueapp-footer">
-            Footer
+            
         </footer>
     </div>
     

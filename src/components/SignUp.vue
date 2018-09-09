@@ -25,9 +25,7 @@ export default {
     },
     methods: {
         signUp: function() {
-            firebase.auth().createUserWithEmailAndPassword(this.signUpForm.email, this.signUpForm.password)
-                    .then((user) => this.$router.replace('helloWorld'))
-                    .catch((err) => console.log(err))
+            this.$store.dispatch('userSignUp', { email: this.signUpForm.email, password: this.signUpForm.password })
         }
     }
 }
