@@ -1,5 +1,6 @@
 <template>
     <div class="vueapp-login">
+        <div class="hg-vueapp-content__image"><img alt="Vue logo" src="../assets/logo.png"></div>
         <h3>Login</h3>
         <div class="vueapp-login__form">
             <input class="vueapp-login__form-field" v-model="loginForm.email" type="text" placeholder="Email"/><br/>

@@ -9,7 +9,6 @@
         </aside>
 
         <article class="hg-vueapp-content">
-            <div class="hg-vueapp-content__image"><img alt="Vue logo" src="../assets/logo.png"></div>
             <router-view/>
         </article>
 
@@ -25,16 +24,8 @@
 </template>
 
 <script>
-import Login from '@/components/Login.vue';
-import HelloWorld from '@/components/HelloWorld.vue';
-
 export default {
-    name: 'VueApp',
-    components: {
-        Login,
-        HelloWorld
-    }
-    
+    name: 'VueApp'    
 }
 </script>
 <style lang="scss" scoped>

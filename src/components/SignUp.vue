@@ -1,5 +1,6 @@
 <template>
     <div class="vueapp-signup">
+        <div class="hg-vueapp-content__image"><img alt="Vue logo" src="../assets/logo.png"></div>
         <h3>Sign In</h3>
         <div class="vueapp-signup">
             <input class="vueapp-signup__form-field" v-model="signUpForm.email" type="text" placeholder="Email"/><br/>
@@ -11,8 +12,6 @@
 </template>
 
 <script>
-import firebase from 'firebase'
-
 export default {
     name: 'signUp',
     data: function() {
