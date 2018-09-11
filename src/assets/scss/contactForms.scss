@@ -1,0 +1,20 @@
+.contact-forms {
+    &__general {
+        display: block;
+        margin-bottom: 2em;
+
+        &-firstname ,&-lastname {
+            width: 100%;
+            margin: 10px 0;
+            width: 100%;
+            padding: 10px 5px;
+
+            @media only screen and (min-device-width : 768px) {
+                width: 40%;
+            }
+        }
+
+        
+
+    }
+}
