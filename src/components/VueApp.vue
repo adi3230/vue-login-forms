@@ -5,6 +5,14 @@
         </header>
   
         <aside class="hg-vueapp-sidebar-left">
+            {{getUser}}
+            <div v-if="getUser">
+               <ul>
+                   <li>
+                       <router-link to="/helloWorld">HelloWorld</router-link>
+                   </li>
+               </ul>
+            </div>
             
         </aside>
 
@@ -24,8 +32,14 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
-    name: 'VueApp'    
+    name: 'VueApp',
+    computed: {
+        ...mapGetters([
+            'getUser',
+        ]),
+    }
 }
 </script>
 <style lang="scss" scoped>

@@ -3,10 +3,12 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import firebase from 'firebase'
+import VeeValidate from 'vee-validate'
 
 import './assets/app.scss'
 
 Vue.config.productionTip = false
+Vue.use(VeeValidate);
 
   let app;
   // Initialize Firebase
