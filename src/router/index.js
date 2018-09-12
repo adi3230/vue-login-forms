@@ -28,6 +28,12 @@ const routes = [
         name: 'HelloWorld',
         component: () => import('@/components/HelloWorld.vue'),
         meta: { requiresAuth: true }
+    },
+    {
+        path: '/communication',
+        name: 'Communication',
+        component: () => import('@/components/NumberComponent.vue'),
+        meta: { requiresAuth: true }
     }
 ]
 
