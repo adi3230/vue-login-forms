@@ -5,19 +5,29 @@ import router from '@/router'
 
 Vue.use(Vuex)
 
+const SET_USER = "SET_USER";
+const ADD_NUMBER = "ADD_NUMBER";
+
 const state = {
-    user: null
+    user: null,
+    numbers: [1, 2, 3]
 }
 
 const getters= {
     getUser(state) {
         return state.user;
+    },
+    getNumbers(state) {
+        return state.numbers
     }
 }
 
 const mutations= {
-    setUser(state, payload) {
+    SET_USER(state, payload) {
         state.user = payload;
+    },
+    ADD_NUMBER(state, payload) {
+        state.numbers.push(payload)
     }
 }
 
@@ -25,7 +35,7 @@ const actions= {
     userSignUp({ commit }, payload) {
         firebase.auth().createUserWithEmailAndPassword(payload.email, payload.password)
                     .then((firebaseUser) => {
-                        commit('setUser', {email: firebaseUser.user.email});
+                        commit(SET_USER, {email: firebaseUser.user.email});
                         router.push('/helloWorld')
                     })
                     .catch((err) => router.push('/signup'))
@@ -33,20 +43,22 @@ const actions= {
     userSignIn({ commit }, payload) {
         firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
                     .then((firebaseUser) => {
-                        commit('setUser', {email: firebaseUser.user.email})
+                        commit(SET_USER, {email: firebaseUser.user.email})
                         router.push('/helloWorld')
                     })
                     .catch((err) => console.log(err))
     },
     userSignOut({ commit }) {
         firebase.auth().signOut().then(() => {
-            commit('setUser')
+            commit(SET_USER)
             router.replace('login')
         })
-
     },
     autoSignIn ({commit}, payload) {
-        commit('setUser', {email: payload.email})
+        commit(SET_USER, {email: payload.email})
+    },
+    addNumber({ commit }, payload) {
+        commit(ADD_NUMBER, payload)
     }
 }
 
