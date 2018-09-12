@@ -2,14 +2,40 @@
     <div class="contact-forms">
         <h1>Learning Forms in VueJs with VeeValidate</h1>
         <!-- Form starts here -->
-        <form class="contact-forms__general">
+        <form>
             <div class="contact-forms__general">
-                <label class="formfix">First Name</label>
-                <input class="contact-forms__general-firstname" v-model="contactForm.firstName" type="text" placeholder="First Name"/>
+                <label class="formfix" 
+                       :class="{'validations': errors.has('firstName')}">
+                       First Name
+                </label>
+                <input name="firstName"
+                       class="contact-forms__general-firstname" 
+                       v-model="contactForm.firstName"
+                       :class="{'has-error': errors.has('firstName')}"
+                       v-validate="{required: true, min: 3}"
+                       type="text" 
+                       required
+                       placeholder="First Name"/>
+                <p class="validations" v-show="errors.has('firstName')">
+                    {{ errors.first('firstName') }}
+                </p>
             </div>
             <div class="contact-forms__general">
-                <label class="formfix">Last Name</label>
-                <input class="contact-forms__general-lastname" v-model="contactForm.lastName" type="text" placeholder="Last Name"/>
+                <label class="formfix" 
+                       :class="{'validations': errors.has('lastName')}">
+                       Last Name
+                </label>
+                <input name="lastName"
+                       class="contact-forms__general-lastname" 
+                       v-model="contactForm.lastName"
+                       :class="{'has-error': errors.has('lastName')}"
+                       v-validate="{required: true, min: 3}"
+                       type="text" 
+                       required
+                       placeholder="Last Name"/>
+                <p class="validations" v-show="errors.has('lastName')">
+                    {{ errors.first('lastName') }}
+                </p>
             </div>
             <div class="contact-forms__general">
                 <label class="formfix">
@@ -58,3 +84,13 @@ export default {
     
 }
 </script>
+<style scoped>
+    .has-error {
+        border: 1px solid red
+    }
+    .validations {
+        color: red;
+        margin: 0;
+    }
+</style>
+
