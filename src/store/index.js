@@ -10,7 +10,9 @@ const state = {
 }
 
 const getters= {
-    
+    getUser(state) {
+        return state.user;
+    }
 }
 
 const mutations= {
@@ -35,6 +37,13 @@ const actions= {
                         router.push('/helloWorld')
                     })
                     .catch((err) => console.log(err))
+    },
+    userSignOut({ commit }) {
+        firebase.auth().signOut().then(() => {
+            commit('setUser')
+            router.replace('login')
+        })
+
     },
     autoSignIn ({commit}, payload) {
         commit('setUser', {email: payload.email})
