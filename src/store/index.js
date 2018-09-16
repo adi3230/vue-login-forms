@@ -3,6 +3,8 @@ import Vuex from 'vuex'
 import firebase from 'firebase'
 import router from '@/router'
 
+import shop from '@/api/products'
+
 Vue.use(Vuex)
 
 const SET_USER = 'SET_USER';
@@ -71,8 +73,15 @@ const actions= {
     addNumber({ commit }, payload) {
         commit(ADD_NUMBER, payload)
     },
-    fetchProducts() {
-
+    fetchProducts({ commit }) {
+        return new Promise((resolve, reject) => {
+             // make the call
+            // call SET_PRODUCTS mutation
+            shop.getProducts(products => {
+                commit('SET_PRODUCTS', products)
+                resolve()
+            })
+        })
     }
 }
 
