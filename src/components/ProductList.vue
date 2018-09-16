@@ -16,7 +16,6 @@
 </template>
 <script>
 import product from '@/api/products'
-import store from '@/store/index'
 
 export default {
     data() {
@@ -26,12 +25,12 @@ export default {
     },
     computed: {
         products() {
-            return store.getters.availableProducts;
+            return this.$store.getters.availableProducts;
         }
     },
     created() {
         this.isLoading = true;
-        store.dispatch('fetchProducts').then(() => this.isLoading = false);
+        this.$store.dispatch('fetchProducts').then(() => this.isLoading = false);
     }
 
 }
