@@ -15,24 +15,30 @@ const routes = [
     },
     {
         path: '/login',
-        name: 'Login',
+        name: 'login',
         component: () => import('@/components/Login.vue')
     },
     {
         path: '/signup',
-        name: 'Signup',
+        name: 'signup',
         component: () => import('@/components/SignUp.vue')
     },
     {
         path: '/helloWorld',
-        name: 'HelloWorld',
+        name: 'helloworld',
         component: () => import('@/components/HelloWorld.vue'),
         meta: { requiresAuth: true }
     },
     {
         path: '/communication',
-        name: 'Communication',
+        name: 'communication',
         component: () => import('@/components/NumberComponent.vue'),
+        meta: { requiresAuth: true }
+    },
+    {
+        path: '/shopping',
+        name: 'shopping',
+        component: () => import('@/components/ShoppingComponent.vue'),
         meta: { requiresAuth: true }
     }
 ]

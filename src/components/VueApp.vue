@@ -15,6 +15,10 @@
                    <li class="hg-vueapp-sidebar-left__list-item">
                        <router-link to="/communication" class="hg-vueapp-sidebar-left__list-item">Props and Vuex</router-link>
                    </li>
+                   <hr/>
+                   <li>
+                       <router-link to="/shopping" class="hg-vueapp-sidebar-left__list-item">Vuex with Shopping</router-link>
+                   </li>
                </ul>
             </div>
             
