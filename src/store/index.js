@@ -5,12 +5,14 @@ import router from '@/router'
 
 Vue.use(Vuex)
 
-const SET_USER = "SET_USER";
-const ADD_NUMBER = "ADD_NUMBER";
+const SET_USER = 'SET_USER';
+const ADD_NUMBER = 'ADD_NUMBER';
+const SET_PRODUCTS = 'SET_PRODUCTS'; 
 
 const state = {
     user: null,
-    numbers: [1, 2, 3]
+    numbers: [1, 2, 3],
+    products: []
 }
 
 const getters= {
@@ -18,7 +20,10 @@ const getters= {
         return state.user;
     },
     getNumbers(state) {
-        return state.numbers
+        return state.numbers;
+    },
+    productsCount(state) {
+        return state.products.length;
     }
 }
 
@@ -28,6 +33,9 @@ const mutations= {
     },
     ADD_NUMBER(state, payload) {
         state.numbers.push(payload)
+    },
+    SET_PRODUCTS(state, products) {
+        state.products = products;
     }
 }
 
@@ -59,6 +67,9 @@ const actions= {
     },
     addNumber({ commit }, payload) {
         commit(ADD_NUMBER, payload)
+    },
+    fetchProducts() {
+
     }
 }
 
