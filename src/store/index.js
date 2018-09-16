@@ -24,6 +24,9 @@ const getters= {
     },
     productsCount(state) {
         return state.products.length;
+    },
+    availableProducts(state) {
+        return state.products.filter(product => product.inventory > 0)
     }
 }
 
