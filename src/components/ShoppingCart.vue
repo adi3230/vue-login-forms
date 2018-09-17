@@ -8,6 +8,8 @@
             </li>
         </ul>
         <p>Total: {{ getTotal | currency }}</p>
+        <button @click="buyProduct">Checkout</button>
+        <p>Status: {{ this.$store.state.checkoutStatus }}</p>
     </div>
 </template>
 <script>
@@ -18,6 +20,11 @@ export default {
         },
         getTotal() {
             return this.$store.getters.getCartTotal;
+        }
+    },
+    methods: {
+        buyProduct() {
+            return this.$store.dispatch('checkout')
         }
     },
 }

@@ -7,8 +7,11 @@ import VeeValidate from 'vee-validate'
 
 import './assets/app.scss'
 
+import { currency } from '@/filters/currency'
+
 Vue.config.productionTip = false
 Vue.use(VeeValidate);
+Vue.filter('currency', currency)
 
   let app;
   // Initialize Firebase

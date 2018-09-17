@@ -13,12 +13,15 @@ const SET_PRODUCTS = 'SET_PRODUCTS';
 const PUSH_PRODUCT_TO_CART = 'PUSH_PRODUCT_TO_CART';
 const INCREMENT_ITEM_QTY = 'INCREMENT_ITEM_QTY';
 const DECREMENT_ITEM_QTY = 'DECREMENT_ITEM_QTY';
+const EMPTY_CART = 'EMPTY_CART';
+const SET_CHECKOUT_STATUS = 'SET_CHECKOUT_STATUS';
 
 const state = {
     user: null,
     numbers: [1, 2, 3],
 	products: [],
-	cart: []
+    cart: [],
+    checkoutStatus: null
 }
 
 const getters= {
@@ -76,7 +79,13 @@ const mutations= {
 	},
 	DECREMENT_ITEM_QTY(state, product) {
 		product.inventory--
-	}
+    },
+    SET_CHECKOUT_STATUS(state, status) {
+        state.checkoutStatus = status
+    },
+    EMPTY_CART(state) {
+        state.cart = []
+    }
 }
 
 const actions= {
@@ -129,9 +138,20 @@ const actions= {
 			}
 			commit('DECREMENT_ITEM_QTY', product)
 		}
-		
+    },
+    checkout({ state , commit }) {
+        shop.buyProducts(
+            state.cart,
+            () => {
+                commit('EMPTY_CART'),
+                commit('SET_CHECKOUT_STATUS', 'success')
+            },
+            () => {
+                commit('SET_CHECKOUT_STATUS', 'fail')
+            }
+        )
 
-	}
+    }
 }
 
 const store = new Vuex.Store({
