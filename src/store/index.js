@@ -33,6 +33,25 @@ const getters= {
     },
     availableProducts(state) {
         return state.products.filter(product => product.inventory > 0)
+    },
+    getCartProducts(state) {
+        return state.cart.map(cartItem => {
+            const product = state.products.find(product => product.id === cartItem.id)
+
+            return {
+                title: product.title,
+                price: product.price,
+                quantity: cartItem.quantity
+            }
+        })
+    },
+    getCartTotal(state, getters) {
+        let total = 0;
+        getters.getCartProducts.forEach(product => {
+            total += product.price * product.quantity
+        })
+
+        return total
     }
 }
 
@@ -53,7 +72,7 @@ const mutations= {
 		})
 	},
 	INCREMENT_ITEM_QTY(state, cartItem) {
-		cart.quantity++
+		cartItem.quantity++
 	},
 	DECREMENT_ITEM_QTY(state, product) {
 		product.inventory--
