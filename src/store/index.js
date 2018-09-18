@@ -55,7 +55,12 @@ const getters= {
         })
 
         return total
-    }
+	},
+	productIsInStock() {
+		return (product) => {
+			return product.inventory > 0
+		}
+	}
 }
 
 const mutations= {
@@ -127,8 +132,8 @@ const actions= {
             })
         })
 	},
-	addToCart({ commit , state }, product) {
-		if(product.inventory > 0) {
+	addToCart({ commit , state, getters }, product) {
+		if(getters.productIsInStock(product)) {
 			const cartItem = state.cart.find(item => item.id === product.id)
 			if(!cartItem) {
 				commit('PUSH_PRODUCT_TO_CART', product.id)
